@@ -1,28 +1,25 @@
+import { MessageProps } from "@/src/types/types";
+
 const ChatCard = ({
-  userName,
+  author,
   message,
-  timestamp,
+  createdAt,
   highlighted,
-}: {
-  userName?: string;
-  message: string;
-  timestamp?: Date;
-  highlighted?: boolean;
-}) => {
+}: MessageProps) => {
   return (
     <div
-      className={`justify-self-start text-mist-400 bg-white p-2 border-1 rounded-lg border-mist-300 ${highlighted ? "justify-self-end" : ""} ${highlighted ? "bg-yellow-100" : ""}`}
+      className={`text-mist-400  p-2 border-1 rounded-lg border-mist-300 ${highlighted ? "self-end" : "self-start"} ${highlighted ? "bg-yellow-100" : "bg-white"}`}
     >
-      {userName && <p>{userName}</p>}
+      {author && <p>{author}</p>}
       <p className="text-zinc-600">{message}</p>
       <p className={`${highlighted ? "text-right" : ""}`}>
         {" "}
-        {timestamp?.toLocaleDateString("es-ES", {
+        {createdAt?.toLocaleDateString("es-ES", {
           year: "numeric",
           day: "numeric",
           month: "short",
         })}{" "}
-        {timestamp?.toLocaleTimeString("es-ES", {
+        {createdAt?.toLocaleTimeString("es-ES", {
           hour: "numeric",
           minute: "numeric",
         })}
