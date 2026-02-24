@@ -1,16 +1,16 @@
-import Image from "next/image";
 import Page from "../components/ui/Page";
-import ChatCard from "../components/features/chat/ChatCard";
 import CardList from "../components/features/chat/CardList";
+import MessageForm from "../components/features/chat/MessageForm";
 
 export default function Home() {
   return (
-    <Page header="header" footer="footer">
+    <Page header="Top Tier Work Group" footer={<MessageForm />}>
       <CardList
         messageList={[
           {
             id: "1",
-            message: "highlighted message",
+            message:
+              "highlighted message. what if this was increadibly long and large and unreasonamble. Would you still love me then?",
             author: "johnyy",
             highlighted: true,
             createdAt: new Date(),

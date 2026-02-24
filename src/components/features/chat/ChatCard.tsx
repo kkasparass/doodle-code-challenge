@@ -8,7 +8,7 @@ const ChatCard = ({
 }: MessageProps) => {
   return (
     <div
-      className={`text-mist-400  p-2 border-1 rounded-lg border-mist-300 ${highlighted ? "self-end" : "self-start"} ${highlighted ? "bg-yellow-100" : "bg-white"}`}
+      className={`text-mist-400 max-w-5/6 sm:max-w-100  p-2 border-1 rounded-lg border-mist-300 ${highlighted ? "self-end" : "self-start"} ${highlighted ? "bg-yellow-100" : "bg-white"}`}
     >
       {author && <p>{author}</p>}
       <p className="text-zinc-600">{message}</p>
