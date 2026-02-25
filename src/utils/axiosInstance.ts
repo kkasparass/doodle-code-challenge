@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:3000/api/v1/",
+  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
   headers: {
-    Authorization: `Bearer super-secret-doodle-token`,
+    Authorization: `Bearer ${process.env.NEXT_PUBLIC_AUTHORIZATION_HEADER}`,
   },
 });
 

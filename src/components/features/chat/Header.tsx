@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Tooltip, TooltipRefProps } from "react-tooltip";
 
 const Header = ({ isError }: { isError?: boolean }) => {

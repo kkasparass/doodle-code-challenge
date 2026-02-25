@@ -1,7 +1,8 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import axiosInstance from "../utils/axiosInstance";
 import { useMemo } from "react";
-import type { MessageMutationProps, MessageResponse } from "../types/types";
+import type { MessageResponse } from "../types/types";
+import { USER_NAME } from "../constants/constants";
 
 const fetchMessages = async () => {
   const response = await axiosInstance.get("/messages");
@@ -21,8 +22,8 @@ const useMessages = () => {
       id: _id,
       message,
       createdAt: new Date(createdAt),
-      highlighted: author === "John Doe",
-      ...(author !== "John Doe" && { author }),
+      highlighted: author === USER_NAME,
+      ...(author !== USER_NAME && { author }),
     }));
   }, [data]);
 

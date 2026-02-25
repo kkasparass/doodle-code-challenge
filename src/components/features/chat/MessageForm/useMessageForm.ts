@@ -1,15 +1,16 @@
 import { RefObject, SubmitEvent, useEffect, useRef, useState } from "react";
+import { AxiosError, AxiosResponse } from "axios";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { TooltipRefProps } from "react-tooltip";
 import { scrollToBottom } from "@/src/utils/scrollToBottom";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import {
   ValidationError,
   MessageMutationProps,
   MessageResponse,
 } from "@/src/types/types";
 import axiosInstance from "@/src/utils/axiosInstance";
-import { AxiosError, AxiosResponse } from "axios";
 import { isValidationError } from "@/src/utils/typeguards";
+import { SCROLL_CONTAINER_ID, USER_NAME } from "@/src/constants/constants";
 
 export const useMessageForm = () => {
   const queryClient = useQueryClient();
@@ -23,7 +24,6 @@ export const useMessageForm = () => {
       return axiosInstance.post("/messages", message);
     },
     onSuccess: async (data) => {
-      console.log("data");
       if (inputRef)
         (inputRef as RefObject<HTMLInputElement>).current.value = "";
       queryClient.setQueryData(["messages"], (oldData: MessageResponse[]) => {
@@ -43,13 +43,13 @@ export const useMessageForm = () => {
     event.preventDefault();
     sendMessageMutation.mutate({
       message: (event.target.firstChild as HTMLFormElement).value,
-      author: "John Doe",
+      author: USER_NAME,
     });
   };
 
   useEffect(() => {
     if (sendMessageMutation.isSuccess) {
-      scrollToBottom(document.getElementById("scroll-container"));
+      scrollToBottom(document.getElementById(SCROLL_CONTAINER_ID));
     }
   }, [sendMessageMutation.isSuccess]);
 

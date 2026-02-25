@@ -1,3 +1,4 @@
+import { SCROLL_CONTAINER_ID } from "@/src/constants/constants";
 import { ReactNode } from "react";
 
 const Page = ({
@@ -18,7 +19,7 @@ const Page = ({
       </header>
       <main
         className="flex justify-center grow bg-[url(/body-bg.png)] px-3 lg:px-0 py-4 overflow-y-scroll box-border"
-        id="scroll-container"
+        id={SCROLL_CONTAINER_ID}
       >
         <div className="w-full max-w-3xl text-black h-fit">{children}</div>
       </main>
