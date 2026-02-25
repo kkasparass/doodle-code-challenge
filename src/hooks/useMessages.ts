@@ -1,8 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import axiosInstance from "../utils/axiosInstance";
 import { useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
+import he from "he";
 import type { MessageResponse } from "../types/types";
 import { USER_NAME } from "../constants/constants";
+import axiosInstance from "../utils/axiosInstance";
 
 const fetchMessages = async () => {
   const response = await axiosInstance.get("/messages");
@@ -20,10 +21,10 @@ const useMessages = () => {
 
     return data.map(({ author, createdAt, message, _id }) => ({
       id: _id,
-      message,
+      message: he.decode(message),
       createdAt: new Date(createdAt),
       highlighted: author === USER_NAME,
-      ...(author !== USER_NAME && { author }),
+      ...(author !== USER_NAME && { author: he.decode(author) }),
     }));
   }, [data]);
 

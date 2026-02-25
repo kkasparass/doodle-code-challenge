@@ -10,7 +10,7 @@ const MessageForm = () => {
     <form className="flex gap-2" onSubmit={onSubmit}>
       <input
         ref={inputRef}
-        className="grow bg-white text-mist-400 px-2 rounded-sm"
+        className="grow bg-white text-mist-600 px-2 rounded-sm"
         type="text"
         name="message"
         placeholder="Message"
