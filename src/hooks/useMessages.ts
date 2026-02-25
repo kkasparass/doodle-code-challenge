@@ -9,8 +9,7 @@ const fetchMessages = async () => {
 };
 
 const useMessages = () => {
-  const queryClient = useQueryClient();
-  const { data, error, isLoading } = useQuery<MessageResponse[]>({
+  const { data, isLoading, isError } = useQuery<MessageResponse[]>({
     queryKey: ["messages"],
     queryFn: fetchMessages,
   });
@@ -27,16 +26,7 @@ const useMessages = () => {
     }));
   }, [data]);
 
-  const sendMessageMutation = useMutation({
-    mutationFn: (message: MessageMutationProps) => {
-      return axiosInstance.post("/messages", message);
-    },
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["messages"] });
-    },
-  });
-
-  return { messages, error, isLoading, sendMessageMutation };
+  return { messages, isError, isLoading };
 };
 
 export default useMessages;

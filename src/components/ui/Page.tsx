@@ -16,7 +16,10 @@ const Page = ({
           {header}
         </div>
       </header>
-      <main className="flex justify-center grow bg-[url(/body-bg.png)] px-3 lg:px-0 py-4 overflow-y-scroll box-border">
+      <main
+        className="flex justify-center grow bg-[url(/body-bg.png)] px-3 lg:px-0 py-4 overflow-y-scroll box-border"
+        id="scroll-container"
+      >
         <div className="w-full max-w-3xl text-black h-fit">{children}</div>
       </main>
       <footer className="flex justify-center bg-sky-600 items-center py-2 px-2 lg:px-0 box-border">
