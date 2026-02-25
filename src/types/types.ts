@@ -12,3 +12,8 @@ export type MessageProps = {
   highlighted?: boolean;
   id: string;
 };
+
+export type MessageMutationProps = {
+  message: string;
+  author: string;
+};
